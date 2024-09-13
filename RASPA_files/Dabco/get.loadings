@@ -1,0 +1,10 @@
+#! /bin/bash
+
+#grep -i 'Average loading absolute \[mol/kg framework\]' Dabco_vol_43.57_*/Output/System_0/output_Dabco_vol_43.57_1.1.1_298.000000_*.data
+#grep -i 'Average loading absolute \[molecules/unit cell\]' Dabco_vol_43.57_*/Output/System_0/output_Dabco_vol_43.57_1.1.1_298.000000_*.data
+#grep -i 'Average loading absolute \[mol/kg framework\]' Dabco_vol_42.57_*/Output/System_0/output_Dabco_vol_42.57_1.1.1_298.000000_*.data
+#grep -i 'Average loading absolute \[molecules/unit cell\]' Dabco_vol_42.57_*/Output/System_0/output_Dabco_vol_42.57_1.1.1_298.000000_*.data
+#grep -i 'Average loading absolute \[mol/kg framework\]' Dabco_vol_40.97_*/Output/System_0/output_Dabco_vol_40.97_1.1.1_298.000000_*.data
+#grep -i 'Average loading absolute \[molecules/unit cell\]' Dabco_vol_40.97_*/Output/System_0/output_Dabco_vol_40.97_1.1.1_298.000000_*.data
+grep -i 'Average loading absolute \[mol/kg framework\]' Dabco_vol_40.37_*/Output/System_0/output_Dabco_vol_40.37_1.1.1_298.000000_*.data
+#grep -i 'Average loading absolute \[molecules/unit cell\]' Dabco_vol_40.37_*/Output/System_0/output_Dabco_vol_40.37_1.1.1_298.000000_*.data

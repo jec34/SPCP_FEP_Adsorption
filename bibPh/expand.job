@@ -1,0 +1,12 @@
+#!/bin/bash
+#$ -M jcarpen3@nd.edu
+#$ -m e
+#$ -q hpc@@colon
+#$ -pe smp 16
+
+module load lammps
+
+n_core=16
+
+mpirun -np ${n_core} lmp_mpi -in in.expand >out.expand
+

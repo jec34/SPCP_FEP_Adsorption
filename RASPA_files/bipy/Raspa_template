@@ -1,0 +1,13 @@
+#! /bin/bash
+
+#$ -M jvegadia@nd.edu   # Email address for job notification
+#$ -m ae            # Send mail when job begins, ends and aborts
+#$ -q hpc@@colon           # Specify queue
+#$ -N bipy_vol_pressureID        # Specify job name
+
+export RASPA_DIR=${HOME}/.conda/envs/raspa_env
+export DYLD_LIBRARY_PATH=${RASPA_DIR}/lib
+export LD_LIBRARY_PATH=${RASPA_DIR}/lib
+$RASPA_DIR/bin/simulate
+
+

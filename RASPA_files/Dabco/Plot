@@ -1,0 +1,66 @@
+import matplotlib.pyplot as plt
+
+import numpy as np
+import pandas as pd
+import glob
+
+
+for path in glob.glob('/scratch365/jvegadia/RASPA/Dabco_cifs/Dabco_vol_r_*/'):
+	with open(path+'Results', 'r') as f:
+		lines = f.readlines()
+		press_list = []
+		loading_list = []
+		for line in lines:
+			print(line)
+			filename = line.split('_')
+			pressure = filename[-1].split('.data')[0]
+			press_list.append(float(pressure))
+			#pressure_points = " ".join(pressure)
+			#print('Pressure:',pressure_points) 
+			average_loading = float(line.split()[6])
+			loading_list.append(average_loading)
+			#print(average_loading)
+
+	#y_other = df_data['Average_loading'].iloc[len(x):]
+		x = press_list[:18]
+		y = loading_list[:18]
+		print(x)
+		print(y)	
+		plt.scatter(x,y, label='Dabco_vol_' + str(path[-6:]), marker = 'o', linewidth=7)
+
+#pressure_points = " ".join(pressure)
+#print('Pressure:',pressure_points)
+
+
+
+#plt.ylim(0,60)
+#plt.xlabel('Pressure [Pa]', fontsize=28)
+plt.xscale('log')
+#plt.xlim((1,1e4))
+#plt.ylabel('Average loading [mol/kg framework]', fontsize=28)
+#plt.title('Dabco Absorption Simulation', fontsize=35, weight='bold')
+plt.legend(fontsize='xx-large')
+l = 10
+w = l * 0.7
+plt.figure(figsize=(l,w))
+
+#plt.yticks([])
+
+
+plt.grid(True, linestyle='--', alpha = 0.7)
+
+ax = plt.gca()
+
+
+ax.tick_params(axis='both', which='major', labelsize=24)
+ax.spines['right'].set_linewidth(2)
+ax.spines['top'].set_linewidth(2)
+ax.spines['bottom'].set_linewidth(2)
+ax.spines['left'].set_linewidth(2)
+
+ax.yaxis.set_ticks_position('left')
+ax.xaxis.set_ticks_position('bottom')
+
+plt.savefig("Dabco_plot.pdf", dpi = 400)
+
+plt.show()

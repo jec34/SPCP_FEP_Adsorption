@@ -1,0 +1,25 @@
+SimulationType                MonteCarlo
+NumberOfCycles                100000
+NumberOfInitializationCycles  100000
+PrintEvery                    5000
+RestartFile                   no
+
+Forcefield                    JamesMOFsJuneForceField
+UseChargesFromCIFFile         no
+
+Framework 0
+FrameworkName Dabco_vol_42.57
+UnitCells 1 1 1
+ExternalTemperature 298.0
+ExternalPressure 999
+ComputeDensityProfile3DVTKGrid yes
+WriteDensityProfile3DVTKGridEvery 2000
+DensityProfile3DVTKGridPoints 150 150 150
+
+Component 0 MoleculeName             methane
+            MoleculeDefinition       ExampleDefinitions
+            TranslationProbability   0.5
+            RotationProbability      0
+            ReinsertionProbability   0
+            SwapProbability          1.0
+            CreateNumberOfMolecules  0

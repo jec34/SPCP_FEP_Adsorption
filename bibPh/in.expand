@@ -1,0 +1,45 @@
+units           real
+atom_style      full
+boundary        p p p
+
+pair_style      lj/cut 12.500
+bond_style      harmonic
+angle_style     hybrid cosine/periodic fourier
+dihedral_style  harmonic
+improper_style  fourier
+
+pair_modify     tail yes mix arithmetic
+dielectric      1.0
+special_bonds   lj/coul 0.0 0.0 1.0
+box tilt        large
+read_data       data.fcu_v1-12c_Zn_1-bibPh
+
+thermo           1000
+thermo_style     custom step temp pe ke enthalpy lx vol press density #pxx pyy pzz pxy pyz pxz
+
+variable curr_len equal 56.18
+
+variable a loop 24
+
+label loop
+
+fix 1 all deform 1 x vel 0.0001 y vel 0.0001 z vel 0.0001
+
+run 2000
+
+unfix 1
+fix 2 all nvt temp 298 298 100 
+
+run 50000
+
+unfix 2
+
+next a
+variable curr_len equal (${curr_len}+0.2)
+variable len_str string ${curr_len}
+variable curr_vol equal round(${curr_len}^3)
+variable vol_str string ${curr_vol}
+variable file_name string "bibPh_vol_${len_str}.lmps"
+write_data ${file_name}
+jump SELF loop
+
